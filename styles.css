@@ -58,6 +58,7 @@ button {
   font-weight: 800;
   letter-spacing: -0.7px;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .brand-light {
@@ -74,7 +75,8 @@ button {
   border-radius: 12px;
   background: rgba(169, 154, 255, 0.14);
   color: #c4b8ff;
-  font-size: 18px;
+  font-size: 11px;
+  letter-spacing: -0.5px;
 }
 
 .page-caption,
@@ -400,6 +402,12 @@ h2 {
   .page-footer {
     gap: 16px;
     font-size: 9px;
+  }
+}
+
+@media (max-width: 420px) {
+  .page-caption {
+    display: none;
   }
 }
 

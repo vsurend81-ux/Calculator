@@ -1,4 +1,4 @@
-# Orbit Calculator
+# AK Sister's Calculator
 
 A small, keyboard-friendly calculator built with plain HTML, CSS, and JavaScript. It supports addition, subtraction, multiplication, and division, and saves calculation history in the current browser.
 
