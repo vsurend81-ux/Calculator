@@ -19,7 +19,7 @@
 }
 
 body {
-  min-width: 320px;
+  min-width: 280px;
   min-height: 100vh;
   margin: 0;
   background:
@@ -29,6 +29,10 @@ body {
 
 button {
   font: inherit;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 .app-shell {
@@ -94,11 +98,179 @@ button {
   margin: 64px auto 48px;
 }
 
+.app-tabs,
+.category-tabs {
+  display: flex;
+  gap: 8px;
+  max-width: 850px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.app-tabs {
+  margin-top: 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.app-tab,
+.category-tab {
+  flex: 0 0 auto;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 140ms ease, border-color 140ms ease;
+}
+
+.app-tab {
+  padding: 12px 16px;
+}
+
+.category-tab {
+  padding: 10px 12px;
+  font-size: 12px;
+}
+
+.app-tab:hover,
+.category-tab:hover {
+  color: #e6e2ff;
+}
+
+.app-tab.is-active,
+.category-tab.is-active {
+  border-bottom-color: var(--accent);
+  color: #d0c7ff;
+}
+
+.app-tab:focus-visible,
+.category-tab:focus-visible,
+.swap-units:focus-visible,
+.conversion-field input:focus-visible,
+.conversion-field select:focus-visible {
+  outline: 2px solid #c3b8ff;
+  outline-offset: 3px;
+}
+
 .panel {
   border: 1px solid var(--line);
   border-radius: 20px;
   background: rgba(25, 29, 40, 0.92);
   box-shadow: 0 22px 70px rgba(0, 0, 0, 0.2);
+}
+
+.workspace[role="tabpanel"] {
+  margin-top: 28px;
+}
+
+.conversion-workspace {
+  max-width: 850px;
+  margin: 28px auto 48px;
+}
+
+.conversion {
+  padding: 26px;
+}
+
+.category-tabs {
+  margin-top: 25px;
+  border-bottom: 1px solid var(--line);
+}
+
+.converter-panel {
+  padding-top: 23px;
+}
+
+.conversion-description,
+.conversion-note {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.conversion-description {
+  margin: 0 0 22px;
+}
+
+.conversion-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) 42px minmax(0, 1.15fr);
+  gap: 12px;
+  align-items: end;
+}
+
+.conversion-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+  color: #c2c6d2;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.conversion-field input,
+.conversion-field select {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  padding: 0 12px;
+  border: 1px solid #343a4b;
+  border-radius: 10px;
+  background: #202431;
+  color: #f4f5f9;
+  font: inherit;
+  font-size: 13px;
+}
+
+.conversion-field input::placeholder {
+  color: #777e90;
+}
+
+.swap-units {
+  width: 42px;
+  height: 46px;
+  border: 1px solid #38334f;
+  border-radius: 10px;
+  background: rgba(169, 154, 255, 0.1);
+  color: #c4b8ff;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.swap-units:hover {
+  background: rgba(169, 154, 255, 0.2);
+}
+
+.conversion-result {
+  min-height: 114px;
+  margin-top: 24px;
+  padding: 18px;
+  border: 1px solid #343044;
+  border-radius: 13px;
+  background: rgba(169, 154, 255, 0.06);
+}
+
+.result-caption {
+  margin: 0 0 9px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.conversion-result output {
+  color: #f0edff;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(19px, 4vw, 27px);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.conversion-note {
+  margin: 17px 0 0;
+  font-size: 10px;
 }
 
 .calculator {
@@ -367,6 +539,16 @@ h2 {
     min-height: 74px;
   }
 
+  .app-tabs,
+  .category-tabs {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .app-tabs {
+    margin-top: 18px;
+  }
+
   .page-caption {
     max-width: 145px;
     text-align: right;
@@ -375,11 +557,29 @@ h2 {
   .workspace {
     grid-template-columns: 1fr;
     gap: 16px;
-    margin: 28px auto 30px;
+    margin: 20px auto 30px;
   }
 
-  .calculator {
+  #calculator-panel.workspace {
+    margin-top: 20px;
+  }
+
+  .calculator,
+  .conversion {
     padding: 21px 18px;
+  }
+
+  .conversion-workspace {
+    margin: 20px auto 30px;
+  }
+
+  .category-tabs {
+    gap: 3px;
+    margin-top: 20px;
+  }
+
+  .category-tab {
+    padding: 10px 9px;
   }
 
   .keypad {
@@ -408,6 +608,15 @@ h2 {
 @media (max-width: 420px) {
   .page-caption {
     display: none;
+  }
+
+  .conversion-fields {
+    grid-template-columns: minmax(0, 1fr) 42px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .conversion-field:first-child {
+    grid-column: 1 / -1;
   }
 }
 

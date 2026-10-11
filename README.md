@@ -1,6 +1,6 @@
 # AK Sister's Calculator
 
-A small, keyboard-friendly calculator built with plain HTML, CSS, and JavaScript. It supports addition, subtraction, multiplication, and division, and saves calculation history in the current browser.
+A keyboard-friendly calculator and unit converter built with plain HTML, CSS, and JavaScript. The calculator supports addition, subtraction, multiplication, and division, and saves calculation history in the current browser.
 
 ## Run it locally
 
@@ -12,6 +12,10 @@ Open `index.html` in a browser. No package installation, build step, or server i
 - Press **Enter** or **=** to calculate, **Backspace** to delete a digit, and **Esc** to clear.
 - Choose an item in History to recall its result.
 - History is stored locally in this browser and can be removed with **Clear**. It is not synchronized across devices.
+
+## Convert units
+
+Open **Metric Conversion**, choose **Length**, **Temperature**, **Area**, **Volume**, or **Weight**, then enter a value and select its **From** and **To** units. The result updates as you type; use the swap button to reverse the units. The converter includes commonly used metric/SI and imperial units, including US customary and imperial liquid measures. It does not aim to cover every specialized or historical unit.
 
 ## Publish with GitHub Pages
 

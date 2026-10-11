@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#10131c">
-    <meta name="description" content="AK Sister's Calculator: a simple, keyboard-friendly calculator with saved calculation history.">
+    <meta name="description" content="AK Sister's Calculator and metric conversion tools for common metric, SI, and imperial units.">
     <title>AK Sister's Calculator</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
@@ -19,7 +19,12 @@
         <p class="page-caption">A little clarity, one calculation at a time.</p>
       </header>
 
-      <section class="workspace" aria-label="Calculator and history">
+      <nav class="app-tabs" role="tablist" aria-label="Tools">
+        <button class="app-tab is-active" id="calculator-tab" type="button" role="tab" aria-selected="true" aria-controls="calculator-panel" tabindex="0">Calculator</button>
+        <button class="app-tab" id="conversion-tab" type="button" role="tab" aria-selected="false" aria-controls="conversion-panel" tabindex="-1">Metric Conversion</button>
+      </nav>
+
+      <section class="workspace" id="calculator-panel" role="tabpanel" aria-labelledby="calculator-tab">
         <section class="calculator panel" aria-labelledby="calculator-title">
           <div class="panel-heading">
             <div>
@@ -75,6 +80,49 @@
           <ol class="history-list" id="history-list" aria-live="polite"></ol>
           <p class="empty-history" id="empty-history">Your recent calculations will show up here.</p>
         </aside>
+      </section>
+
+      <section class="conversion-workspace" id="conversion-panel" role="tabpanel" aria-labelledby="conversion-tab" hidden>
+        <section class="conversion panel" aria-labelledby="conversion-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">QUICK AND CLEAR</p>
+              <h1 id="conversion-title">Metric Conversion</h1>
+            </div>
+          </div>
+
+          <div class="category-tabs" role="tablist" aria-label="Conversion categories">
+            <button class="category-tab is-active" id="length-tab" type="button" role="tab" aria-selected="true" aria-controls="converter-panel" tabindex="0" data-category="length">Length</button>
+            <button class="category-tab" id="temperature-tab" type="button" role="tab" aria-selected="false" aria-controls="converter-panel" tabindex="-1" data-category="temperature">Temperature</button>
+            <button class="category-tab" id="area-tab" type="button" role="tab" aria-selected="false" aria-controls="converter-panel" tabindex="-1" data-category="area">Area</button>
+            <button class="category-tab" id="volume-tab" type="button" role="tab" aria-selected="false" aria-controls="converter-panel" tabindex="-1" data-category="volume">Volume</button>
+            <button class="category-tab" id="weight-tab" type="button" role="tab" aria-selected="false" aria-controls="converter-panel" tabindex="-1" data-category="weight">Weight</button>
+          </div>
+
+          <div class="converter-panel" id="converter-panel" role="tabpanel" aria-labelledby="length-tab">
+            <p class="conversion-description">Convert between common metric and imperial length units.</p>
+            <div class="conversion-fields">
+              <label class="conversion-field" for="conversion-input">
+                <span>Value</span>
+                <input id="conversion-input" type="number" inputmode="decimal" step="any" placeholder="Enter a value">
+              </label>
+              <label class="conversion-field" for="from-unit">
+                <span>From</span>
+                <select id="from-unit"></select>
+              </label>
+              <button class="swap-units" id="swap-units" type="button" aria-label="Swap units" title="Swap units">⇄</button>
+              <label class="conversion-field" for="to-unit">
+                <span>To</span>
+                <select id="to-unit"></select>
+              </label>
+            </div>
+            <div class="conversion-result" aria-live="polite" aria-atomic="true">
+              <p class="result-caption">Result</p>
+              <output id="conversion-result">Enter a value to convert</output>
+            </div>
+          </div>
+          <p class="conversion-note">Conversions use standard unit factors. Results are rounded for display.</p>
+        </section>
       </section>
 
       <footer class="page-footer">
